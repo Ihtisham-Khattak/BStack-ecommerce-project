@@ -1,26 +1,29 @@
 class sauceSignup {
-  elements = {
-    firstName: () => cy.get(":nth-child(4) > #first_name"),
-    lastName: () => cy.get(":nth-child(5) > #last_name"),
-    emailAddress: () => cy.xpath("//input[@type='email']"),
-    password: () => cy.xpath("//input[@type='password']"),
-    signUpBtn: () => cy.get(".action_bottom > input"),
-  };
+  constructor() {
+      (this.firstName = () => cy.get(":nth-child(4) > #first_name")),
+      (this.lastName = () => cy.get(":nth-child(5) > #last_name")),
+      (this.emailAddress = () => cy.xpath("//input[@type='email']")),
+      (this.password = () => cy.xpath("//input[@type='password']")),
+      (this.signUpBtn = () => cy.xpath("//input[@value='Create']"));
+  }
 
+  sauceVisit() {
+    cy.visit("/register");
+  }
   sauceFirstName(firstname) {
-    this.elements.firstName().type(firstname);
+    this.firstName().type(firstname);
   }
   sauceLastName(lastname) {
-    this.elements.lastName().type(lastname);
+    this.lastName().type(lastname);
   }
   sauceEmailAddress(emailaddress) {
-    this.elements.emailAddress().type(emailaddress);
+    this.emailAddress().type(emailaddress);
   }
   saucePassword(password) {
-    this.elements.password().type(password);
+    this.password().type(password);
   }
   saucePasswordBtn() {
-    this.elements.signUpBtn().click();
+    this.signUpBtn().click();
   }
 }
 
