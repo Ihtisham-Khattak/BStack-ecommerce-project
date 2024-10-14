@@ -8,6 +8,7 @@ module.exports = defineConfig({
       allureWriter(on, config);
       return config;
     },
-    baseUrl: "https://sauce-demo.myshopify.com/account",
+    baseUrl: "https://bstackdemo.com/",
+    // baseUrl: "https://sauce-demo.myshopify.com/account",
   },
 });

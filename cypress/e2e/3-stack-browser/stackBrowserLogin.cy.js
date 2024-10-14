@@ -5,7 +5,7 @@ describe("Browser Stack Login Functionality", () => {
   beforeEach(() => {
     cy.clearCookies({ log: true });
     cy.clearLocalStorage({ log: true });
-    cy.visit("/");
+    cy.visit("signin");
   });
 
   //UnSuccessful Login Functionality
@@ -24,11 +24,25 @@ describe("Browser Stack Login Functionality", () => {
     cy.xpath(
       "(//div[@class='shelf-item__buy-btn'][normalize-space()='Add to cart'])"
     ).each(($el, index, $list) => {
-      cy.wrap($el).click();
-      cy.log(index, $list);
-      cy.get(".float-cart__close-btn").click();
+      if (index < 24) {
+        cy.wrap($el).click();
+        cy.log(index, $list);
+        cy.get(".float-cart__close-btn").click();
+      } else if (index == 24) {
+        cy.wrap($el).click(); // Add the last item to cart
+        cy.log(index, $list);
+        cy.get(".buy-btn").click();
+      }
     });
+  });
 
-    cy.xpath("//div[@class, 'bag bag--float-cart-closed']").click()
+  it("Category Checking", () => {
+    //span[normalize-space()='OnePlus']
+    //span[normalize-space()='Samsung']
+    //span[normalize-space()='Apple']
+    loginFun.loginFunctionality();
+    cy.xpath("//span[normalize-space()='OnePlus']")
+      .should("have.text", "OnePlus")
+      .click();
   });
 });

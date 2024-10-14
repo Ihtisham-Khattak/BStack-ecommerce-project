@@ -1,7 +1,5 @@
-class stackLogin 
-{
-  elements = 
-  {
+class stackLogin {
+  elements = {
     userName: () => cy.get("#username > .css-yk16xz-control > .css-1hwfws3"),
     selectUserName: () => cy.xpath("//div[text()='demouser']"),
     userPassword: () =>
@@ -10,9 +8,7 @@ class stackLogin
     submitButton: () => cy.get("#login-btn"),
     errorValidation: () => cy.get(".api-error"),
   };
-
-  loginFunctionality()
-  {
+  loginFunctionality() {
     this.elements.userName().click();
     this.elements.selectUserName().click();
     this.elements.userPassword().click();
@@ -21,9 +17,8 @@ class stackLogin
   }
 
   loginEmptyFunctionality() {
-    this.elements.submitButton().click();   
+    this.elements.submitButton().click();
     this.elements.errorValidation().should("have.text", "Invalid Username");
   }
 }
-
 export default stackLogin;

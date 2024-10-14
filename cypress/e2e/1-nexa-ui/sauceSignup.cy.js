@@ -6,7 +6,7 @@ it("Test Case Number 01", function () {
   // Load fixture data
   cy.fixture("profile.json").then((responseData) => {
     // Continue with the test steps
-    sauce_signup.sauceVisit("/register");
+    // sauce_signup.sauceVisit("/");
     cy.log(responseData);
     sauce_signup.sauceFirstName(responseData.fname);
     sauce_signup.sauceLastName(responseData.lname);

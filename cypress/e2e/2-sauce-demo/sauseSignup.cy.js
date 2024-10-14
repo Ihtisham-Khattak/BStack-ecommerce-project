@@ -4,7 +4,7 @@ describe("Sauce demo Side", () => {
   before(() => {
     cy.clearCookies({ log: true });
     cy.clearLocalStorage({ log: true });
-    cy.visit("/register");
+    // cy.visit("/register");
   });
 
   it("Test Case No 1 for SignUp Screen", () => {
